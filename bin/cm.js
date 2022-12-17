@@ -79,14 +79,14 @@ function assertInstalled() {
 }
 
 function install(arg = null) {
-  let base = arg == "--ssh" ? "git@github.com:codemirror/" : "https://github.com/codemirror/"
+  let base = arg == "--ssh" ? "git@github.com:" : "https://github.com/"
   if (arg && arg != "--ssh") help(1)
 
   for (let pkg of packages) {
     if (fs.existsSync(pkg.dir)) {
       console.warn(`Skipping cloning of ${pkg.name} (directory exists)`)
     } else {
-      let origin = base + (pkg.name == "codemirror" ? "basic-setup" : pkg.name) + ".git"
+      let origin = base + pkg.repo + ".git"
       run("git", ["clone", origin, pkg.dir])
     }
   }
@@ -188,24 +188,26 @@ function setModuleVersion(pkg, version) {
   fs.writeFileSync(file, fs.readFileSync(file, "utf8").replace(/"version":\s*".*?"/, `"version": "${version}"`))
 }
 
-function updateDependencyVersion(pkg, version) {
-  let changed = []
-  for (let other of packages) if (other != pkg) {
-    let pkgFile = join(other.dir, "package.json"), text = fs.readFileSync(pkgFile, "utf8")
-    let updated = text.replace(new RegExp(`("@codemirror/${pkg.name}": ")(.*?)"`, "g"), (_, m) => m + "^" + version + '"')
-    if (updated != text) {
-      changed.push(other)
-      fs.writeFileSync(pkgFile, updated)
-      run("git", ["add", "package.json"], other.dir)
-      let lastMsg = run("git", ["log", "-1", "--pretty=%B"], other.dir)
-      if (/^Bump dependency /.test(lastMsg))
-        run("git", ["commit", "--amend", "-m", lastMsg.trimEnd() + ", @codemirror/" + pkg.name], other.dir)
-      else
-        run("git", ["commit", "-m", "Bump dependency for @codemirror/" + pkg.name], other.dir)
-    }
-  }
-  return changed
-}
+// HE HAD THIS TURNED OFF ANYWAY
+// IF I ADD IT BACK< I NEED TO UPDATE IT
+// function updateDependencyVersion(pkg, version) {
+//   let changed = []
+//   for (let other of packages) if (other != pkg) {
+//     let pkgFile = join(other.dir, "package.json"), text = fs.readFileSync(pkgFile, "utf8")
+//     let updated = text.replace(new RegExp(`("@codemirror/${pkg.name}": ")(.*?)"`, "g"), (_, m) => m + "^" + version + '"')
+//     if (updated != text) {
+//       changed.push(other)
+//       fs.writeFileSync(pkgFile, updated)
+//       run("git", ["add", "package.json"], other.dir)
+//       let lastMsg = run("git", ["log", "-1", "--pretty=%B"], other.dir)
+//       if (/^Bump dependency /.test(lastMsg))
+//         run("git", ["commit", "--amend", "-m", lastMsg.trimEnd() + ", @codemirror/" + pkg.name], other.dir)
+//       else
+//         run("git", ["commit", "-m", "Bump dependency for @codemirror/" + pkg.name], other.dir)
+//     }
+//   }
+//   return changed
+// }
 
 function version(pkg) {
   return require(join(pkg.dir, "package.json")).version
@@ -228,10 +230,11 @@ function release(...args) {
 
   // Turned off for now, since this creates a huge mess on accidental
   // major version bumps. Maybe add a manual utility for it?
-  if (false && mainVersion.exec(newVersion)[0] != mainVersion.exec(version(pkg))[0]) {
-    let updated = updateDependencyVersion(pkg, newVersion)
-    if (updated.length) console.log(`Updated dependencies in ${updated.map(p => p.name).join(", ")}`)
-  }
+  // HE TURNED IT OFF WITH "false" - I explicitly commented it out since I have other changes to make to support it
+  // if (false && mainVersion.exec(newVersion)[0] != mainVersion.exec(version(pkg))[0]) {
+  //   let updated = updateDependencyVersion(pkg, newVersion)
+  //   if (updated.length) console.log(`Updated dependencies in ${updated.map(p => p.name).join(", ")}`)
+  // }
 }
 
 function doRelease(pkg, newVersion, {edit = false, defaultChanges = null}) {
@@ -242,7 +245,7 @@ function doRelease(pkg, newVersion, {edit = false, defaultChanges = null}) {
   let changes = newPackage ? {fix: [], feature: [], breaking: ["First numbered release."]} : changelog(pkg, currentVersion)
   if (defaultChanges && !changes.fix.length && !changes.feature.length && !changes.breaking.length) changes = defaultChanges
   if (!newVersion) newVersion = newPackage ? currentVersion : bumpVersion(currentVersion, changes)
-  console.log(`Creating @codemirror/${pkg.name} ${newVersion}`)
+  console.log(`Creating ${pkg.fullName} ${newVersion}`)
 
   let notes = releaseNotes(changes, newVersion)
   if (edit) notes = editReleaseNotes(notes)
