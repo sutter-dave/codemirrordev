@@ -32,4 +32,6 @@ package-lock.json
 /lang-wast
 /legacy-modes
 /theme-one-dark
+/lezer-markdown
+/cmwidgetdev
 .tern-*
