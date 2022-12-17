@@ -30,7 +30,7 @@ const nonCoreRepos = [
   "lang-sql",
   "lang-rust",
   "lang-xml",
-  ["lang-markdown","codemirror/lang-markdown","@codemirror/lang-markdown"],
+  ["lang-markdown","sutter-dave/lang-markdown","@codemirror/lang-markdown"],
   "lang-lezer",
   "lang-wast",
   "legacy-modes",
