@@ -2,7 +2,7 @@ import {EditorView, basicSetup} from "codemirror"
 import {javascript} from "@codemirror/lang-javascript"
 import {markdown} from "@codemirror/lang-markdown"
 
-import {doubler, checkboxPlugin, regexpLinter, images, codeEvaluator} from "../cmwidgetdev/dist/index.js"
+import {doubler, checkboxPlugin, regexpLinter, images, codeEvaluator} from "@sutter-dave/cmwidgetdev"
 
 
 console.log("Double 5: " + doubler(5))
