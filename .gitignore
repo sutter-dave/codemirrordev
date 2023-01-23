@@ -34,4 +34,6 @@ package-lock.json
 /theme-one-dark
 /lezer-markdown
 /cmwidgetdev
+/lezer-markdown-sp
+/lang-markdown-sp
 .tern-*
