@@ -10,10 +10,10 @@
   "license": "MIT",
   "devDependencies": {
     "@codemirror/buildhelper": "^0.1.5",
+    "builddocs": "^1.0.0",
     "esmoduleserve": "^0.2.0",
-    "serve-static": "^1.14.1",
     "getdocs-ts": "^0.1.0",
-    "builddocs": "^1.0.0"
+    "serve-static": "^1.14.1"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,9 @@
   "workspaces": [
     "*"
   ],
-  "private": true
+  "private": true,
+  "dependencies": {
+    "codemirror-lang-r": "^0.1.0-2",
+    "lezer-r": "^0.1.0-5"
+  }
 }

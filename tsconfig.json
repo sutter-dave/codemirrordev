@@ -38,7 +38,9 @@
       "@codemirror/lang-wast": ["./lang-wast/src/wast.ts"],
       "@codemirror/theme-one-dark": ["./theme-one-dark/src/one-dark.ts"],
       "@sutter-dave/cmwidgetdev": ["./cmwidgetdev/src/index.ts"],
-      "@lezer-language/markdown": ["./lezer-markdown/src/index.ts"]
+      "@lezer-language/markdown": ["./lezer-markdown/src/index.ts"],
+      "@codemirror/lang-markdown-sp": ["./lang-markdown-sp/src/index.ts"],
+      "@lezer-language/markdown-sp": ["./lezer-markdown-sp/src/index.ts"],
     }
   },
   "include": ["*/src/*.ts", "*/test/*.ts", "demo/demo.ts"],
