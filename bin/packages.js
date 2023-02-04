@@ -37,11 +37,12 @@ const nonCoreRepos = [
   "theme-one-dark",
   "merge",
   ["cmwidgetdev","sutter-dave/cmwidgetdev","@sutter-dave/cmwidgetdev"],
-  ["lezer-markdown","sutter-dave/cm-lezer-markdown","@lezer/markdown"],
-  ["lezer-markdown-sp","dsexperimental/cm-lezer-markdown_sp","@lezer/markdown-sp"],
-  ["lang-markdown-sp","dsexperimental/cm-lang-markdown_sp","@codemirror/lang-markdown-sp"],
+ //["lezer-markdown","sutter-dave/cm-lezer-markdown","@lezer/markdown"],
+ //["lezer-markdown-sp","dsexperimental/cm-lezer-markdown_sp","@lezer/markdown-sp"],
+  //["lang-markdown-sp","dsexperimental/cm-lang-markdown_sp","@codemirror/lang-markdown-sp"],
   //["lang-r","TravisYeah/lang-r","lang-r"],
   //["lezer-r","TravisYeah/lezer-r","lezer-r"]
+  ["lang-example","dsexperimental/cm-lang-example","codemirror-lang-EXAMPLE"],
 ]
 
 const allRepos = coreRepos.concat(nonCoreRepos)

@@ -1,16 +1,27 @@
 import {EditorView, basicSetup} from "codemirror"
 //import {javascript} from "@codemirror/lang-javascript"
 //import {rLanguage} from "codemirror-lang-r"
-import {markdown} from "@codemirror/lang-markdown-sp"
+//import {markdown} from "@codemirror/lang-markdown-sp"
+import {EXAMPLE} from "codemirror-lang-EXAMPLE"
 
-import { /*regexpLinter, images,*/ repdoc} from "@sutter-dave/cmwidgetdev"
+import {images} from "@sutter-dave/cmwidgetdev"
+
+// ;(window as any).view = new EditorView({
+//   doc: 'console.log("Hello world")',
+//   extensions: [
+//     basicSetup,
+//     repdoc(),
+//     markdown(/*{defaultCodeLanguage: javascript()}*/)
+//   ],
+//   parent: document.querySelector("#editorMD")!
+// })
 
 ;(window as any).view = new EditorView({
-  doc: 'console.log("Hello world")',
+  doc: 'fg <- 5 %.-ry-6% f',
   extensions: [
     basicSetup,
-    repdoc(),
-    markdown(/*{defaultCodeLanguage: javascript()}*/)
+    images(),
+    EXAMPLE()
   ],
   parent: document.querySelector("#editorMD")!
 })

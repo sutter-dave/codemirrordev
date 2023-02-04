@@ -36,4 +36,5 @@ package-lock.json
 /cmwidgetdev
 /lezer-markdown-sp
 /lang-markdown-sp
+/lang-example
 .tern-*
