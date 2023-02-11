@@ -22,6 +22,7 @@ import {images} from "@sutter-dave/cmwidgetdev"
     basicSetup,
     images(),
     EXAMPLE()
+    //javascript()
   ],
   parent: document.querySelector("#editorMD")!
 })

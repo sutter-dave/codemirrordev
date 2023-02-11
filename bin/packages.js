@@ -20,6 +20,7 @@ const coreRepos = [
 ]
 const nonCoreRepos = [
   "lang-javascript",
+  //["lezer-javascript","lezer-parser/javascript","@lezer/javascript"],
   "lang-java",
   "lang-json",
   "lang-cpp",
@@ -40,8 +41,6 @@ const nonCoreRepos = [
  //["lezer-markdown","sutter-dave/cm-lezer-markdown","@lezer/markdown"],
  //["lezer-markdown-sp","dsexperimental/cm-lezer-markdown_sp","@lezer/markdown-sp"],
   //["lang-markdown-sp","dsexperimental/cm-lang-markdown_sp","@codemirror/lang-markdown-sp"],
-  //["lang-r","TravisYeah/lang-r","lang-r"],
-  //["lezer-r","TravisYeah/lezer-r","lezer-r"]
   ["lang-example","dsexperimental/cm-lang-example","codemirror-lang-EXAMPLE"],
 ]
 

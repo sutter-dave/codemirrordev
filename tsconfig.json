@@ -42,6 +42,7 @@
       //"@codemirror/lang-markdown-sp": ["./lang-markdown-sp/src/index.ts"],
       //"@lezer-language/markdown-sp": ["./lezer-markdown-sp/src/index.ts"],
       "codemirror-lang-EXAMPLE": ["./lang-example/src/index.ts"],
+      "@lezer/javascript": ["./lezer-jacascript/src/index.ts"],
     }
   },
   "include": ["*/src/*.ts", "*/test/*.ts", "demo/demo.ts"],
